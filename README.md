@@ -165,10 +165,15 @@ rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 sudo yum install -y jenkins
 sudo service jenkins start
 ```
+run this 
+```
+chmod +x jenkins_setup.sh
+sudo ./jenkins_setup.sh
+```
 
 ### `jenkins_backup_job.xml`
 
-This file contains the Jenkins job configuration for PostgreSQL backup:
+This file contains the Jenkins job configuration for PostgreSQL backup by the help of free style:
 
 ```xml
 <?xml version='1.1' encoding='UTF-8'?>
@@ -187,7 +192,36 @@ This file contains the Jenkins job configuration for PostgreSQL backup:
   <buildWrappers/>
 </project>
 ```
+or
+```bash
+#!/bin/bash
 
+# Set PostgreSQL environment variables
+export PGPASSWORD='barbazqux'
+
+# Define backup directory and file
+BACKUP_DIR="/var/lib/jenkins/backup"
+BACKUP_FILE="$BACKUP_DIR/mydatabase.backup"
+
+# Ensure the backup directory exists
+sudo mkdir -p $BACKUP_DIR
+sudo chown jenkins:jenkins $BACKUP_DIR
+
+# Perform the database backup
+pg_dump -h terraform-20240912164702173100000001.c72msiceshh4.us-east-1.rds.amazonaws.com \
+        -U rudraksh \
+        -d mydatabase \
+        -F c -b -v -f $BACKUP_FILE
+
+# Check the status of the backup command
+if [ $? -ne 0 ]; then
+  echo "Backup failed!"
+  exit 1
+else
+  echo "Backup successful!"
+  exit 0
+fi
+```
 ## Usage
 
 1. **Initialize and Apply Terraform Configuration:**
