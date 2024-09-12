@@ -247,23 +247,10 @@ terraform destroy
 
 When prompted, type `yes` to confirm and destroy the resources.
 
-## License
-
-This project is licensed under the   GNU GENERAL PUBLIC LICENSE- see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [Terraform](https://www.terraform.io/)
-- [AWS](https://aws.amazon.com/)
-- [Jenkins](https://www.jenkins.io/)
-
----
-
-Replace placeholders like `your-username`, `your-key.pem`, and `your-ec2-instance-public-dns` with actual values specific to your setup. This README provides a comprehensive guide to setting up and using your project.
 
 
 ---
-### **More Detail about the project and use cases**
+# **More Detail about the project and use cases**
 
 
 
@@ -328,3 +315,18 @@ The primary objective of this project is to automate the backup process of a Pos
    - Maintain documentation of the backup process, including configurations, schedules, and restoration procedures, for reference and compliance.
 
 By implementing this automated backup solution with Jenkins and PostgreSQL, you can streamline database management, improve data protection, and ensure that your data is reliably backed up and recoverable.
+---
+## License
+
+This project is licensed under the   GNU GENERAL PUBLIC LICENSE- see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Terraform](https://www.terraform.io/)
+- [AWS](https://aws.amazon.com/)
+- [Jenkins](https://www.jenkins.io/)
+
+---
+
+Replace placeholders like `your-username`, `your-key.pem`, and `your-ec2-instance-public-dns` with actual values specific to your setup. This README provides a comprehensive guide to setting up and using your project.
+
